@@ -1,0 +1,110 @@
+[
+  {
+    "id": "javascript",
+    "slug": "javascript",
+    "title": "JavaScript",
+    "icon": "FileCode",
+    "description": "Maîtrisez les fondamentaux de JavaScript, des variables aux Promesses.",
+    "lessons": [
+      {
+        "id": "js-variables",
+        "title": "Les Variables",
+        "content": "En JavaScript, on déclare des variables avec `let`, `const` ou `var`.\n\n- `const` : pour les valeurs qui ne changent pas.\n- `let` : pour les valeurs qui peuvent changer.\n- `var` : ancienne syntaxe, à éviter.\n\n```js\nconst nom = \"Alice\";\nlet age = 25;\nage = 26; // OK avec let\n```",
+        "exercise": {
+          "instruction": "Déclarez une constante `PI` avec la valeur 3.14159 et une variable `rayon` avec la valeur 5. Calculez l'aire du cercle dans une variable `aire`.",
+          "solution": "const PI = 3.14159;\nlet rayon = 5;\nlet aire = PI * rayon * rayon;"
+        }
+      },
+      {
+        "id": "js-fonctions",
+        "title": "Les Fonctions",
+        "content": "Les fonctions permettent de regrouper du code réutilisable.\n\n```js\n// Fonction classique\nfunction saluer(nom) {\n  return `Bonjour ${nom} !`;\n}\n\n// Fonction fléchée\nconst saluer = (nom) => `Bonjour ${nom} !`;\n```",
+        "exercise": {
+          "instruction": "Créez une fonction fléchée `doubler` qui prend un nombre en paramètre et retourne son double.",
+          "solution": "const doubler = (n) => n * 2;"
+        }
+      },
+      {
+        "id": "js-promesses",
+        "title": "Les Promesses et async/await",
+        "content": "Les Promesses permettent de gérer les opérations asynchrones.\n\n```js\n// Créer une Promesse\nconst attendre = (ms) => new Promise(resolve => {\n  setTimeout(resolve, ms);\n});\n\n// Utiliser async/await\nasync function main() {\n  console.log(\"Début\");\n  await attendre(2000);\n  console.log(\"Terminé après 2 secondes\");\n}\n```",
+        "exercise": {
+          "instruction": "Créez une fonction async `attendreEtAfficher` qui attend 2 secondes (avec setTimeout et une Promesse) avant d'afficher \"Terminé\" dans la console.",
+          "solution": "async function attendreEtAfficher() {\n  await new Promise(resolve => setTimeout(resolve, 2000));\n  console.log(\"Terminé\");\n}"
+        }
+      }
+    ]
+  },
+  {
+    "id": "nodejs",
+    "slug": "nodejs",
+    "title": "Node.js",
+    "icon": "Server",
+    "description": "Découvrez Node.js et apprenez à créer des applications côté serveur.",
+    "lessons": [
+      {
+        "id": "node-intro",
+        "title": "Introduction à Node.js",
+        "content": "Node.js permet d'exécuter du JavaScript côté serveur.\n\n```js\n// Lancer un script\n// $ node monScript.js\n\nconsole.log(\"Hello depuis Node.js !\");\nconsole.log(`Version de Node : ${process.version}`);\n```\n\nNode.js utilise un système de modules pour organiser le code.",
+        "exercise": {
+          "instruction": "Créez un script Node.js qui affiche votre nom et la version de Node.js utilisée.",
+          "solution": "console.log(\"Mon nom est Alice\");\nconsole.log(`Node.js version : ${process.version}`);"
+        }
+      },
+      {
+        "id": "node-fs",
+        "title": "Le module fs (File System)",
+        "content": "Le module `fs` permet de lire et écrire des fichiers.\n\n```js\nconst fs = require('fs');\n\n// Lire un fichier\nconst contenu = fs.readFileSync('input.txt', 'utf-8');\nconsole.log(contenu);\n\n// Écrire dans un fichier\nfs.writeFileSync('output.txt', contenu);\n```\n\nOn peut aussi utiliser les versions asynchrones avec `fs.promises`.",
+        "exercise": {
+          "instruction": "Créez un script qui lit le contenu d'un fichier `source.txt` et écrit son contenu dans un nouveau fichier `copie.txt`.",
+          "solution": "const fs = require('fs');\nconst contenu = fs.readFileSync('source.txt', 'utf-8');\nfs.writeFileSync('copie.txt', contenu);\nconsole.log('Copie effectuée !');"
+        }
+      },
+      {
+        "id": "node-http",
+        "title": "Créer un serveur HTTP",
+        "content": "Node.js permet de créer un serveur web sans framework.\n\n```js\nconst http = require('http');\n\nconst serveur = http.createServer((req, res) => {\n  res.writeHead(200, { 'Content-Type': 'text/html' });\n  res.end('<h1>Bonjour le monde !</h1>');\n});\n\nserveur.listen(3000, () => {\n  console.log('Serveur lancé sur http://localhost:3000');\n});\n```",
+        "exercise": {
+          "instruction": "Créez un serveur HTTP qui répond avec un JSON contenant votre nom et votre âge sur la route '/'.",
+          "solution": "const http = require('http');\nconst serveur = http.createServer((req, res) => {\n  res.writeHead(200, { 'Content-Type': 'application/json' });\n  res.end(JSON.stringify({ nom: 'Alice', age: 25 }));\n});\nserveur.listen(3000);"
+        }
+      }
+    ]
+  },
+  {
+    "id": "nextjs",
+    "slug": "nextjs",
+    "title": "Next.js",
+    "icon": "Layout",
+    "description": "Apprenez Next.js et créez des applications web modernes avec React.",
+    "lessons": [
+      {
+        "id": "next-intro",
+        "title": "Introduction à Next.js",
+        "content": "Next.js est un framework React pour la production.\n\n**Avantages :**\n- Rendu côté serveur (SSR)\n- Routage basé sur les fichiers\n- Optimisation automatique\n\n```bash\n# Créer un projet\nnpx create-next-app@latest mon-app\ncd mon-app\nnpm run dev\n```",
+        "exercise": {
+          "instruction": "Décrivez les 3 principaux avantages de Next.js par rapport à React seul.",
+          "solution": "1. Rendu côté serveur (SSR) pour un meilleur SEO\n2. Routage automatique basé sur le système de fichiers\n3. Optimisation automatique des images et du code"
+        }
+      },
+      {
+        "id": "next-routage",
+        "title": "Le Routage et les Composants",
+        "content": "Avec l'App Router, chaque dossier dans `/app` devient une route.\n\n```\n/app\n  /page.js        → /\n  /about/page.js  → /about\n  /blog/[id]/page.js → /blog/1, /blog/2...\n```\n\nLes composants React sont la base de l'interface :\n\n```jsx\nexport default function MaPage() {\n  return <h1>Ma Page</h1>;\n}\n```",
+        "exercise": {
+          "instruction": "Créez une page `/exercice` qui affiche un compteur interactif avec les boutons + et -.",
+          "solution": "'use client';\nimport { useState } from 'react';\n\nexport default function Exercice() {\n  const [compteur, setCompteur] = useState(0);\n  return (\n    <div>\n      <h1>Compteur : {compteur}</h1>\n      <button onClick={() => setCompteur(c => c - 1)}>-</button>\n      <button onClick={() => setCompteur(c => c + 1)}>+</button>\n    </div>\n  );\n}"
+        }
+      },
+      {
+        "id": "next-api",
+        "title": "Les Route Handlers (API)",
+        "content": "Next.js permet de créer des API directement dans le projet.\n\n```js\n// app/api/hello/route.js\nexport async function GET() {\n  return Response.json({ message: 'Bonjour !' });\n}\n\nexport async function POST(request) {\n  const body = await request.json();\n  return Response.json({ reçu: body });\n}\n```",
+        "exercise": {
+          "instruction": "Créez un Route Handler GET qui retourne la date et l'heure actuelles au format JSON.",
+          "solution": "export async function GET() {\n  return Response.json({\n    date: new Date().toLocaleDateString('fr-FR'),\n    heure: new Date().toLocaleTimeString('fr-FR')\n  });\n}"
+        }
+      }
+    ]
+  }
+]
